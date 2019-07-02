@@ -1,10 +1,17 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.content.Intent;
+import android.graphics.Movie;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import org.parceler.Parcels;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -19,10 +26,49 @@ import cz.msebera.android.httpclient.Header;
 
 public class TimelineActivity extends AppCompatActivity {
 
+    public static final int COMPOSE_TWEET_REQUEST_CODE = 100;
     private TwitterClient client;
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.timeline, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.miCompose:
+                composeMessage();
+                return true;
+            case R.id.miProfile:
+     //TODO           showProfileView();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == COMPOSE_TWEET_REQUEST_CODE && resultCode == RESULT_OK) {
+            Tweet resultTweet = Parcels.unwrap(getIntent().getParcelableExtra(ComposeActivity.RESULT_TWEET_KEY));
+            tweets.add(0, resultTweet);
+            tweetAdapter.notifyItemInserted(0);
+            Toast.makeText(this, "Tweet sent!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void composeMessage() {
+        Intent composeTweet = new Intent(this, ComposeActivity.class);
+        startActivityForResult(composeTweet, COMPOSE_TWEET_REQUEST_CODE);
+    }
+
 
 
     @Override

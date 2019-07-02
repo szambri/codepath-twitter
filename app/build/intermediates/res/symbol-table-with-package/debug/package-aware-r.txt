@@ -382,6 +382,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color black
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -390,6 +391,7 @@ color bright_foreground_material_dark
 color bright_foreground_material_light
 color button_material_dark
 color button_material_light
+color colorAccent
 color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
@@ -435,8 +437,12 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color textBody
 color tooltip_background_dark
 color tooltip_background_light
+color twitterBlue
+color userHandle
+color whiteBackground
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -647,6 +653,8 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable ic_action_name
+drawable ic_compse
 drawable ic_launcher
 drawable notification_action_background
 drawable notification_bg
@@ -697,6 +705,8 @@ id barrier
 id beginning
 id blocking
 id bottom
+id btnCancelCompose
+id btnSendTweet
 id buttonPanel
 id cancel_action
 id center
@@ -720,6 +730,7 @@ id disableHome
 id edit_query
 id end
 id end_padder
+id etTweetInput
 id expand_activities_button
 id expanded_menu
 id fill
@@ -739,6 +750,7 @@ id info
 id invisible
 id italic
 id item_touch_helper_previous_elevation
+id ivCompseAvatar
 id ivProfileImage
 id left
 id line1
@@ -747,6 +759,8 @@ id listMode
 id list_item
 id media_actions
 id message
+id miCompose
+id miProfile
 id middle
 id multiply
 id never
@@ -812,6 +826,7 @@ id title_template
 id top
 id topPanel
 id tvBody
+id tvDate
 id tvUserName
 id uniform
 id up
@@ -852,6 +867,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_compose
 layout activity_login
 layout activity_timeline
 layout item_tweet
@@ -875,6 +891,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu login
+menu timeline
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
