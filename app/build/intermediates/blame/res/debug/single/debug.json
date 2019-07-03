@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/color_abc_primary_text_material_dark.xml.flat",
-        "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/color/abc_primary_text_material_dark.xml"
-    },
-    {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/layout_abc_action_mode_close_item_material.xml.flat",
         "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/color_abc_primary_text_material_dark.xml.flat",
+        "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/color/abc_primary_text_material_dark.xml"
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/color_mtrl_btn_ripple_color.xml.flat",
@@ -24,12 +24,12 @@
         "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/77ac23c6a6689edad601420b6b9c72ef/res/layout/notification_template_big_media_custom.xml"
     },
     {
-        "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_36dp.png.flat",
-        "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/drawable-xxhdpi-v4/abc_ic_star_black_36dp.png"
-    },
-    {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_black_16dp.png.flat",
         "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/drawable-hdpi-v4/abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_36dp.png.flat",
+        "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/drawable-xxhdpi-v4/abc_ic_star_black_36dp.png"
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_header_item_layout.xml.flat",
@@ -52,12 +52,12 @@
         "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
-        "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/layout_abc_screen_toolbar.xml.flat",
-        "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/layout/abc_screen_toolbar.xml"
-    },
-    {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_vector_location_stroke.png.flat",
         "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_vector_location_stroke.png"
+    },
+    {
+        "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/layout_abc_screen_toolbar.xml.flat",
+        "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -404,6 +404,10 @@
         "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/src/main/res/layout/activity_login.xml"
     },
     {
+        "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable_splash_screen.xml.flat",
+        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/src/main/res/drawable/splash_screen.xml"
+    },
+    {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/anim-v21_design_bottom_sheet_slide_in.xml.flat",
         "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/16abac3c281f420f045fe66cf3cf6a35/res/anim-v21/design_bottom_sheet_slide_in.xml"
     },
@@ -717,7 +721,7 @@
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_action_name.png.flat",
-        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/src/main/res/drawable-mdpi/ic_action_name.png"
+        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/generated/res/pngs/debug/drawable-mdpi/ic_action_name.png"
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/color_mtrl_btn_stroke_color_selector.xml.flat",
@@ -733,7 +737,7 @@
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_action_name.png.flat",
-        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/src/main/res/drawable-hdpi/ic_action_name.png"
+        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/generated/res/pngs/debug/drawable-hdpi/ic_action_name.png"
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
@@ -1080,6 +1084,10 @@
         "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/drawable/abc_spinner_textfield_background_material.xml"
     },
     {
+        "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable_ic_launcher_twitter_round.png.flat",
+        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/src/main/res/drawable/ic_launcher_twitter_round.png"
+    },
+    {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "/Users/sophiazambri/.gradle/caches/transforms-2/files-2.1/19abd734f4a84128fc6e0bbaae7899fa/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
@@ -1153,7 +1161,7 @@
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_action_name.png.flat",
-        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/src/main/res/drawable-xxhdpi/ic_action_name.png"
+        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_action_name.png"
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_list_longpressed_holo.9.png.flat",
@@ -1181,7 +1189,7 @@
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_action_name.png.flat",
-        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/src/main/res/drawable-xhdpi/ic_action_name.png"
+        "source": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_action_name.png"
     },
     {
         "merged": "/Users/sophiazambri/Desktop/FBU/Twitter/codepath-twitter/app/build/intermediates/res/merged/debug/drawable_design_fab_background.xml.flat",

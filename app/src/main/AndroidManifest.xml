@@ -18,7 +18,7 @@
         <activity android:name=".TimelineActivity" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

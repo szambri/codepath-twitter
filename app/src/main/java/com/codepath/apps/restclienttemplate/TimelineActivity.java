@@ -1,9 +1,9 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Intent;
-import android.graphics.Movie;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import org.parceler.Parcels;
 
@@ -26,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -33,6 +33,7 @@ public class TimelineActivity extends AppCompatActivity {
 
     public static final int COMPOSE_TWEET_REQUEST_CODE = 100;
     private TwitterClient client;
+    private SwipeRefreshLayout swipeContainer;
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
@@ -101,9 +102,50 @@ public class TimelineActivity extends AppCompatActivity {
         rvTweets.setLayoutManager(new LinearLayoutManager(this));
         // set adapter
         rvTweets.setAdapter(tweetAdapter);
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                fetchTimelineAsync(0);
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
         populateTimeline();
 
     }
+
+    public void fetchTimelineAsync(int page) {
+        // Send the network request to fetch the updated data
+        // `client` here is an instance of Android Async HTTP
+        // getHomeTimeline is an example endpoint.
+        client.getHomeTimeline(new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                // Remember to CLEAR OUT old items before appending in the new ones
+                tweetAdapter.clear();
+                // ...the data has come back, add new items to your adapter...
+                updateTimeline(response);
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
+            }
+
+            public void onFailure(Throwable e) {
+                Log.d("DEBUG", "Fetch timeline error: " + e.toString());
+            }
+        });
+    }
+
+
     private void populateTimeline() {
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
@@ -116,19 +158,7 @@ public class TimelineActivity extends AppCompatActivity {
         //        Log.d("TwitterClient", response.toString());
                 //iterate through array
                 //deserialize for each entry
-                for(int i =0; i<response.length(); i++)
-                {
-                    // convert each object to tweet model
-                    //add tweet model to data source
-                    //notify adapter
-                    try {
-                        Tweet tweet =Tweet.fromJSON(response.getJSONObject(i));
-                        tweets.add(tweet);
-                        tweetAdapter.notifyItemInserted(tweets.size()-1);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
+                updateTimeline(response);
             }
 
             @Override
@@ -149,5 +179,21 @@ public class TimelineActivity extends AppCompatActivity {
                 throwable.printStackTrace();
             }
         });
+    }
+
+    private void updateTimeline(JSONArray response) {
+        for(int i =0; i<response.length(); i++)
+        {
+            // convert each object to tweet model
+            //add tweet model to data source
+            //notify adapter
+            try {
+                Tweet tweet =Tweet.fromJSON(response.getJSONObject(i));
+                tweets.add(tweet);
+                tweetAdapter.notifyItemInserted(tweets.size()-1);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
