@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import android.content.Intent;
 import android.graphics.Movie;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +11,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import org.parceler.Parcels;
+
+import android.view.View;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -31,6 +36,7 @@ public class TimelineActivity extends AppCompatActivity {
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
+    FloatingActionButton fabCompose;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,9 +49,6 @@ public class TimelineActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.miCompose:
-                composeMessage();
-                return true;
             case R.id.miProfile:
      //TODO           showProfileView();
                 return true;
@@ -70,11 +73,22 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        setSupportActionBar(toolbar);
+        fabCompose = findViewById(R.id.fabCompose);
+
+        fabCompose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                composeMessage();
+            }
+        });
         client = TwitterApp.getRestClient(this);
 
         //find recycler view
