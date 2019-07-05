@@ -1,6 +1,8 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Movie;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -12,9 +14,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 
+import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
+import java.text.BreakIterator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,19 +30,18 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
-    private List<Tweet> mTweets;
-
+    List<Tweet> mTweets;
     Context context;
+    boolean hasMedia;
+    boolean hasUrl;
+
     // pass in Tweets array
-    public TweetAdapter(List<Tweet> tweets) {
-        mTweets = tweets;
-    }
+    public TweetAdapter(List<Tweet> tweets) {mTweets = tweets;}
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-
         View tweetView = inflater.inflate(R.layout.item_tweet, parent, false);
         ViewHolder viewHolder = new ViewHolder(tweetView);
         return viewHolder;
@@ -53,12 +57,18 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         holder.tvUsername.setText(tweet.user.name);
         holder.tvBody.setText(tweet.body);
         holder.tvDate.setText(getRelativeTimeAgo(tweet.createdAt));
+        holder.tvHandle.setText(tweet.user.screenName);
 
         Glide.with(context)
                 .load(tweet.user.profileImageUrl)
                 .bitmapTransform(new RoundedCornersTransformation(context, 30, 0))
-                .into(holder.ivProfileImage)
-        ;
+                .into(holder.ivProfileImage);
+
+        Glide.with(context)
+                .load(tweet.mediaUrl)
+                .bitmapTransform(new RoundedCornersTransformation(context, 30, 0))
+                .into(holder.ivMedia);
+
     }
 
     @Override
@@ -68,25 +78,40 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
     // create ViewHolder class
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView ivProfileImage;
-        public TextView tvUsername;
-        public TextView tvBody;
-        public TextView tvDate;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ImageView ivProfileImage = (ImageView) itemView.findViewById(R.id.ivProfileImage);
+        ImageView ivMedia = (ImageView) itemView.findViewById(R.id.ivMedia);
+        TextView tvUsername = (TextView) itemView.findViewById(R.id.tvUserName);
+        TextView tvBody = (TextView) itemView.findViewById(R.id.tvBody);
+        TextView tvDate = (TextView) itemView.findViewById(R.id.tvDate);
+        TextView tvHandle = (TextView) itemView.findViewById(R.id.tvHandle);
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             //perform findViewById lookups
-            ivProfileImage = (ImageView) itemView.findViewById(R.id.ivProfileImage);
-            tvUsername = (TextView) itemView.findViewById(R.id.tvUserName);
-            tvBody = (TextView) itemView.findViewById(R.id.tvBody);
-            tvDate = (TextView) itemView.findViewById(R.id.tvDate);
+          //  tvUsername = (TextView) itemView.findViewById(R.id.tvUserName);
+          //  tvBody = (TextView) itemView.findViewById(R.id.tvBody);
+           // tvDate = (TextView) itemView.findViewById(R.id.tvDate);
+           // tvHandle = (TextView) itemView.findViewById(R.id.tvHandle);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                Tweet tweet = mTweets.get(position);
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra(Tweet.class.getSimpleName(), Parcels.wrap(tweet));
+                context.startActivity(intent);
+            }
+
         }
     }
     public static Date parseTwitterDate(String date) throws ParseException
     {
-        final String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        final String twitterFormat = "EEE MMM dd yyyy";
         SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
         sf.setLenient(true);
         return sf.parse(date);
@@ -107,7 +132,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         }
 
         return relativeDate;*/
-        Date system_date = new Date(rawJsonDate);
+        Date system_date = new Date();
         Date user_date = new Date();
         double diff = Math.floor((user_date.getTime() - system_date.getTime()) / 1000);
         if (diff <= 1) {return "just now";}

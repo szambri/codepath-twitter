@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
 import org.parceler.Parcels;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +29,7 @@ public class ComposeActivity extends AppCompatActivity {
     Button btnSendTweet;
     TwitterClient client;
     Button btnCancelCompose;
+    ImageView ivCompseAvatar;
     Context context;
 
     @Override
@@ -36,6 +40,7 @@ public class ComposeActivity extends AppCompatActivity {
         etTweetInput = findViewById(R.id.etTweetInput);
         btnSendTweet = findViewById(R.id.btnSendTweet);
         btnCancelCompose = findViewById(R.id.btnCancelCompose);
+        ivCompseAvatar = findViewById(R.id.ivCompseAvatar);
 
         btnSendTweet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +58,14 @@ public class ComposeActivity extends AppCompatActivity {
         });
 
         client = TwitterApp.getRestClient(this);
+
+        //TODO
+
+//        Glide.with(context)
+//                .load(tweet.user.profileImageUrl)
+//                .bitmapTransform(new RoundedCornersTransformation(context, 30, 0))
+//                .into(holder.ivCompseAvatar)
+//        ;
     }
     private void sendTweet() {
         client.sendTweet(etTweetInput.getText().toString(), new AsyncHttpResponseHandler() {

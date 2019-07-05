@@ -8,11 +8,14 @@
 
     <Button
         android:id="@+id/btnCancelCompose"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/whiteBackground"
         android:text="Cancel"
+        android:textColor="@color/twitter_blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +25,8 @@
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/twitter_blue"
+        android:textColor="@color/whiteBackground"
         android:text="Tweet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
