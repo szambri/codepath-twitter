@@ -1175,8 +1175,10 @@ id info
 id invisible
 id italic
 id item_touch_helper_previous_elevation
+id ivBanner
 id ivCompseAvatar
 id ivMedia
+id ivProfile
 id ivProfileImage
 id labeled
 id largeLabel
@@ -1288,6 +1290,10 @@ id transition_scene_layoutid_cache
 id transition_transform
 id tvBody
 id tvDate
+id tvFollowers
+id tvFollowersText
+id tvFollowing
+id tvFollowingWords
 id tvHandle
 id tvTitle
 id tvUserName
@@ -1350,6 +1356,7 @@ layout abc_tooltip
 layout activity_compose
 layout activity_detail
 layout activity_login
+layout activity_profile
 layout activity_timeline
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
