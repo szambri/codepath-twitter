@@ -28,8 +28,8 @@ public class Tweet {
         tweet.uid = jsonObject.getLong("id");
         tweet.createdAt = jsonObject.getString("created_at").substring(0,11)+jsonObject.getString("created_at").substring(26,30);
         tweet.user = User.fromJSON(jsonObject.getJSONObject("user"));
-        tweet.mediaUrl= " ";
-        tweet.url= " ";
+        tweet.mediaUrl= "";
+        tweet.url= "";
 
         if(jsonObject.has("entities"))
         {

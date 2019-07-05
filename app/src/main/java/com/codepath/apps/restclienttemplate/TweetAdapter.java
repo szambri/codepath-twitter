@@ -64,10 +64,15 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
                 .bitmapTransform(new RoundedCornersTransformation(context, 30, 0))
                 .into(holder.ivProfileImage);
 
-        Glide.with(context)
-                .load(tweet.mediaUrl)
-                .bitmapTransform(new RoundedCornersTransformation(context, 30, 0))
-                .into(holder.ivMedia);
+        if(tweet.mediaUrl.isEmpty()){
+            holder.ivMedia.setVisibility(View.GONE);
+        } else {
+            holder.ivMedia.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(tweet.mediaUrl)
+                    .bitmapTransform(new RoundedCornersTransformation(context, 30, 0))
+                    .into(holder.ivMedia);
+        }
 
     }
 
