@@ -64,9 +64,10 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == COMPOSE_TWEET_REQUEST_CODE && resultCode == RESULT_OK) {
-            Tweet resultTweet = Parcels.unwrap(getIntent().getParcelableExtra(ComposeActivity.RESULT_TWEET_KEY));
+            Tweet resultTweet = Parcels.unwrap(data.getParcelableExtra(ComposeActivity.RESULT_TWEET_KEY));
             tweets.add(0, resultTweet);
             tweetAdapter.notifyItemInserted(0);
+            rvTweets.scrollToPosition(0);
             Toast.makeText(this, "Tweet sent!", Toast.LENGTH_LONG).show();
         }
     }
