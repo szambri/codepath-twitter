@@ -54,6 +54,7 @@ public class User$$Parcelable
             parcel$$1 .writeString(user$$1 .name);
             parcel$$1 .writeString(user$$1 .screenName);
             parcel$$1 .writeString(user$$1 .profileImageUrl);
+            parcel$$1 .writeString(user$$1 .profileBannerUrl);
         }
     }
 
@@ -83,6 +84,7 @@ public class User$$Parcelable
             user$$4 .name = parcel$$3 .readString();
             user$$4 .screenName = parcel$$3 .readString();
             user$$4 .profileImageUrl = parcel$$3 .readString();
+            user$$4 .profileBannerUrl = parcel$$3 .readString();
             com.codepath.apps.restclienttemplate.models.User user$$3 = user$$4;
             identityMap$$1 .put(identity$$1, user$$3);
             return user$$3;

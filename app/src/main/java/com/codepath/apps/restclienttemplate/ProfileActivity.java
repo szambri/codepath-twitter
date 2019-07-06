@@ -4,14 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.apps.restclienttemplate.models.User;
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -31,18 +34,16 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    public final static String API_BASE_URL = "https://api.twitter.com/1.1/account/settings.json";
-    public final static String API_KEY_PARAM = "api_key";
-    public final static String TAG = "MovieDetails";
 
     Tweet tweet;
     ImageView ivProfileImage;
+    ImageView ivBanner;
     TextView tvUserName;
     TextView tvFollowers;
     TextView tvFollowing;
+    TextView tvBio;
     TextView tvHandle;
-    AsyncHttpClient client;
-    Context context;
+    long uid;
 
 
     @Override
@@ -54,32 +55,63 @@ public class ProfileActivity extends AppCompatActivity {
         tvHandle = (TextView) findViewById(R.id.tvHandle);
         tvFollowers = (TextView) findViewById(R.id.tvFollowers);
         tvFollowing = (TextView) findViewById(R.id.tvFollowing);
-        client = new AsyncHttpClient();
+        ivBanner = (ImageView) findViewById(R.id.ivBanner);
+        tvBio = (TextView) findViewById(R.id.tvBio);
+        getUserDetails();
+  //      getUserPhotos();
 
     }
-//    private void getConfiguration() {
-//        String url = API_BASE_URL;
-//        RequestParams params = new RequestParams();
-//        params.put("api_key", "4KxocRp2Wh8RZ9cy1KJEjxGVy");
-//        client.get(url, params, new JsonHttpResponseHandler() {
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                try {
-//                    JSONArray results = response.getJSONArray("results");
-//                    // get now playing movie list
-//                    key = results.getJSONObject(0).getString("key");
-//                    Intent i = new Intent(MovieDetailsActivity.this, MovieTrailerActivity.class);
-//                    i.putExtra("video_key", key);
-//                    MovieDetailsActivity.this.startActivity(i);
-//                } catch (JSONException e) {
-//                    logError("Failed parsing configuration", e, true);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-//                logError("Failed getting configuration", throwable, true);
-//            }
-//        });
-//    }
+    public void getUserDetails()
+    {
+        TwitterApp.getRestClient(this).getUserProfile(new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String responseString = new String(responseBody);
+                try{
+                    JSONObject response = new JSONObject(responseString);
+                    tvUserName.setText(response.getString("name"));
+                    tvHandle.setText("@" + response.getString("screen_name"));
+                    tvBio.setText(response.getString("description"));
+                    tvFollowers.setText(response.getString("followers_count"));
+                    tvFollowing.setText(response.getString("friends_count"));
+                    uid = response.getLong("id");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+    public void getUserPhotos()
+    {
+        TwitterApp.getRestClient(this).getUserPhotos(uid, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String responseString = new String(responseBody);
+                try{
+                    JSONObject response = new JSONObject(responseString);
+                    Glide.with(ProfileActivity.this)
+                            .load(response.getString("profile_image_url"))
+                            .bitmapTransform(new RoundedCornersTransformation(ProfileActivity.this, 30, 0))
+                            .into(ivProfileImage);
+                    Glide.with(ProfileActivity.this)
+                            .load(response.getString("profile_banner_url"))
+                            .bitmapTransform(new RoundedCornersTransformation(ProfileActivity.this, 30, 0))
+                            .into(ivBanner);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
 }

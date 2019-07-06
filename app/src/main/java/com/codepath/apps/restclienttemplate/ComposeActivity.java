@@ -61,11 +61,7 @@ public class ComposeActivity extends AppCompatActivity {
 
         //TODO
 
-//        Glide.with(context)
-//                .load(tweet.user.profileImageUrl)
-//                .bitmapTransform(new RoundedCornersTransformation(context, 30, 0))
-//                .into(holder.ivCompseAvatar)
-//        ;
+
     }
     private void sendTweet() {
         client.sendTweet(etTweetInput.getText().toString(), new AsyncHttpResponseHandler() {

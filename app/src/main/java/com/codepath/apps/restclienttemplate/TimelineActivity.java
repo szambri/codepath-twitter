@@ -53,7 +53,8 @@ public class TimelineActivity extends AppCompatActivity {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.miProfile:
-     //TODO           showProfileView();
+                Intent intent = new Intent(this, ProfileActivity.class);
+                this.startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

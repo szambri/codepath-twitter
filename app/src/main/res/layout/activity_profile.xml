@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:textStyle="bold"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +25,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
 
@@ -32,10 +33,11 @@
         android:id="@+id/ivBanner"
         android:layout_width="0dp"
         android:layout_height="120dp"
+        android:backgroundTint="@color/twitter_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/inline_action" />
+        app:srcCompat="@color/twitter_blue" />
 
     <ImageView
         android:id="@+id/ivProfile"
@@ -45,7 +47,8 @@
         android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ivBanner"
-        app:srcCompat="@color/black" />
+        app:srcCompat="@drawable/ic_launcher_twitter_round"
+        android:tint="@color/light_gray"/>
 
     <TextView
         android:id="@+id/tvFollowing"
@@ -53,41 +56,55 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/black"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHandle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBio" />
 
     <TextView
         android:id="@+id/tvFollowingWords"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="Following"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toEndOf="@+id/tvFollowing"
-        app:layout_constraintTop_toBottomOf="@+id/tvHandle"
-        tools:text="Following" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBio" />
 
     <TextView
         android:id="@+id/tvFollowers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/black"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toEndOf="@+id/tvFollowingWords"
-        app:layout_constraintTop_toBottomOf="@+id/tvHandle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBio" />
 
     <TextView
         android:id="@+id/tvFollowersText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="Followers"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toEndOf="@+id/tvFollowers"
-        app:layout_constraintTop_toBottomOf="@+id/tvHandle"
-        tools:text="Followers" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBio" />
+
+    <TextView
+        android:id="@+id/tvBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHandle" />
 </android.support.constraint.ConstraintLayout>
